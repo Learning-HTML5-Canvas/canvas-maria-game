@@ -1,9 +1,13 @@
 import Head from 'next/head'
-
-
-
-
+import MarioGame from '@/gameLogic'
+import { useEffect } from 'react'
 export default function Home() {
+
+  useEffect(() => {
+    const marioGame = new MarioGame();
+
+    return () => marioGame.dispose()
+  }, [])
   return (
     <>
       <Head>
@@ -12,8 +16,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main >
-        HELLO WORLD
+      <main className=' grid place-content-center h-full bg-black'>
+        <canvas id='canvas' className=' overflow-hidden'></canvas>
       </main>
     </>
   )
